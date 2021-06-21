@@ -7,6 +7,7 @@ import MovieDetailsPage from "./pages/MovieDetailsPage";
 import SearchMovies from "./pages/SearchMovies";
 // import Cast from "./components/Cast";
 // import Reviews from "./components/Reviews";
+import "./styles/base.scss"
 
 class App extends Component {
   state = {
