@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { getFilmById } from "../utils/apiService";
-import {Button} from "@material-ui/core"
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/w500";
 
@@ -26,11 +25,24 @@ class MovieDetailsPage extends Component {
     return (
       <>
         <h1>Film Information</h1>
-        <Button onClick={this.handleGoBack} variant="contained" color="primary">
-          Go back
-        </Button>
+        <button onClick={this.handleGoBack} className="goBack">
+          GO BACK
+        </button>
+        {<img
+          src={`${BASE_IMG_URL}${this.state.filmInfo.poster_path}`}
+          alt={this.state.filmInfo.original_title}
+        /> ? (
+          <img
+            src={`${BASE_IMG_URL}${this.state.filmInfo.poster_path}`}
+            alt={this.state.filmInfo.original_title}
+          />
+        ) : (
+          <img
+            src="./images/not-found.png"
+            alt="not pictures"
+          />
+        )}
         <h2>{this.state.filmInfo.original_title}</h2>
-        <img src={`${BASE_IMG_URL}${this.state.filmInfo.poster_path}`} alt="" />
         <p>{this.state.filmInfo.overview}</p>
       </>
     );

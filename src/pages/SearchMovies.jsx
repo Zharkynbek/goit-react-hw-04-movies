@@ -6,21 +6,21 @@ class SearchMovies extends Component {
   state = {
     query: "",
     movies: [],
-    };
-    
-    componentDidMount=()=> {
-        console.log(this.props.location.state.search);
-        if (this.props.location.state !== null) {
-            this.setState({
-              query: this.props.location.state.search
-            });
-            getFilmsByQuery(this.props.location.state.search).then(resp => {
-                this.setState({
-                    movies: resp.data.results
-                })
-            })
-        }
-    }
+  };
+
+  // componentDidMount = () => {
+  //   console.log(this.props.location.state.search);
+  //   if (this.props.location.state !== null) {
+  //     this.setState({
+  //       query: this.props.location.state.search,
+  //     });
+  //     getFilmsByQuery(this.props.location.state.search).then(resp => {
+  //       this.setState({
+  //         movies: resp.data.results
+  //       })
+  //     })
+  //   }
+  // }
 
   handleChangeQuery = (e) => {
     this.setState({
@@ -36,6 +36,7 @@ class SearchMovies extends Component {
       });
     });
   };
+
   render() {
     return (
       <>

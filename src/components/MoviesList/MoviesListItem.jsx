@@ -16,10 +16,9 @@ const MoviesListItem = ({ movie, history, query }) => {
       }}
     >
       <li className="ImageGalleryItem">
-        <h1>Title: {movie.title}</h1>
+        {/* <h1>Title: {movie.title}</h1> */}
         <p>Release date: {movie.release_date}</p>
         <img src={`${BASE_IMG_URL}${movie.poster_path}`} alt="" width="320" />
-        {console.log(movie)}
       </li>
     </Link>
   );
