@@ -18,7 +18,7 @@ const MoviesListItem = ({ movie, history, query }) => {
       }}
     >
       <li className="ImageGalleryItem">
-        <p class="ReleaseDate">Release date: {movie.release_date}</p>
+        <p className="ReleaseDate">Release date: {movie.release_date}</p>
 
         <img
           src={
