@@ -8,19 +8,18 @@ class SearchMovies extends Component {
     movies: [],
   };
 
-  // componentDidMount = () => {
-  //   console.log(this.props.location.state.search);
-  //   if (this.props.location.state !== null) {
-  //     this.setState({
-  //       query: this.props.location.state.search,
-  //     });
-  //     getFilmsByQuery(this.props.location.state.search).then(resp => {
-  //       this.setState({
-  //         movies: resp.data.results
-  //       })
-  //     })
-  //   }
-  // }
+  componentDidMount = () => {
+    if (this.props.location.state !== null) {
+      this.setState({
+        query: this.props.location.state.search,
+      });
+      getFilmsByQuery(this.props.location.state.search).then(resp => {
+        this.setState({
+          movies: resp.data.results
+        })
+      })
+    }
+  }
 
   handleChangeQuery = (e) => {
     this.setState({

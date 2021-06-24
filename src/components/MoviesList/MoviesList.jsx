@@ -4,7 +4,7 @@ import MoviesListItem from "./MoviesListItem"
 
 const MoviesList = ({ movies, query, history }) => {
   return (
-    <ul>
+    <ul className="MovieList">
       {movies.map((movie) => (
         <MoviesListItem
           query={query}
