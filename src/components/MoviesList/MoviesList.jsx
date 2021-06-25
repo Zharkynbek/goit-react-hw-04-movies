@@ -1,6 +1,5 @@
-import React from "react"
-import MoviesListItem from "./MoviesListItem"
-
+import React from "react";
+import MoviesListItem from "./MoviesListItem";
 
 const MoviesList = ({ movies, query, history }) => {
   return (

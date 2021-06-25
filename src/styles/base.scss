@@ -62,7 +62,7 @@ p {
 
 .ImageGalleryItem-image:hover {
   transform: scale(1.03);
-  cursor: zoom-in;
+  cursor: pointer;
 }
 
 .ReleaseDate {
@@ -71,7 +71,6 @@ p {
   text-decoration: none;
   text-align: center;
   font-size: 18px;
-  font-weight: 700;
   color: rgb(248, 242, 242);
 }
 
@@ -161,7 +160,10 @@ ul {
 }
 
 .home {
-  margin-right: 25px;
+  margin-right: 10px;
+   @media screen and (min-width: 728px) {
+margin-right: 25px;
+   }
 }
 
 .navigation {
@@ -171,11 +173,26 @@ ul {
 }
 
 input {
-  width: 70%;
+  width: 40%;
   padding: 12px 20px;
   margin: 21px 0 0 0;
   display: inline-block;
   border: 1px solid #ccc;
   border-radius: 4px;
   box-sizing: border-box;
+  margin-bottom: 10px;
+  // cursor: pointer;
+  // opacity: .6;
+  // background-size: 17%;
+  // background-position: 99%;
+  //   background-repeat: no-repeat;
+  // background-image: url(https://image.flaticon.com/icons/svg/149/149852.svg);
+  
+  @media screen and (min-width: 728px) {
+    // background-size: 3%;
+    // opacity: .6;
+    // background-repeat: no-repeat;
+    // background-position: 99%;
+    width: 70%;
+   }
 }

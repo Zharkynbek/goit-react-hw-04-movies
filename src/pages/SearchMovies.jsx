@@ -13,13 +13,13 @@ class SearchMovies extends Component {
       this.setState({
         query: this.props.location.state.search,
       });
-      getFilmsByQuery(this.props.location.state.search).then(resp => {
+      getFilmsByQuery(this.props.location.state.search).then((resp) => {
         this.setState({
-          movies: resp.data.results
-        })
-      })
+          movies: resp.data.results,
+        });
+      });
     }
-  }
+  };
 
   handleChangeQuery = (e) => {
     this.setState({
