@@ -6,6 +6,15 @@ body {
     Roboto, Oxygen, 'Open Sans', Ubuntu, Cantarell, sans-serif;
 }
 
+.HomeTitle {
+  margin-left: 10px;
+  @media screen and (max-width: 480px) {
+    margin-top: 30px;
+    margin-left: 10px;
+    font-size: 25px;
+   }
+  
+}
 // img {
 //   display: block;
 //   max-width: 100%;
@@ -181,18 +190,8 @@ input {
   border-radius: 4px;
   box-sizing: border-box;
   margin-bottom: 10px;
-  // cursor: pointer;
-  // opacity: .6;
-  // background-size: 17%;
-  // background-position: 99%;
-  //   background-repeat: no-repeat;
-  // background-image: url(https://image.flaticon.com/icons/svg/149/149852.svg);
   
   @media screen and (min-width: 728px) {
-    // background-size: 3%;
-    // opacity: .6;
-    // background-repeat: no-repeat;
-    // background-position: 99%;
     width: 70%;
    }
 }
