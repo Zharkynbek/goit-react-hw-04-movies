@@ -1,15 +1,13 @@
 import React, { Component } from "react";
 import { Route, NavLink } from "react-router-dom";
 import { getFilmById } from "../utils/apiService";
-import Reviews from "../components/Reviews"
+import Reviews from "../components/Reviews";
 import Cast from "../components/Cast";
-import {Button} from "@material-ui/core"
-
+import { Button } from "@material-ui/core";
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/w500";
 const defaultPoster =
   "http://valmorgan.co.nz/wp-content/uploads/2016/06/default-movie-1-3.jpg";
-
 
 class MovieDetailsPage extends Component {
   state = {
@@ -20,16 +18,15 @@ class MovieDetailsPage extends Component {
     getFilmById(this.props.location.state.id).then((resp) => {
       this.setState({ filmInfo: resp.data });
     });
-    }
-    
-    handleGoBack = () => {
-        this.props.history.push(this.props.history.location.state.from, {
-          search: this.props.history.location.state.search,
-        });
-    }
+  }
+
+  handleGoBack = () => {
+    this.props.history.push(this.props.history.location.state.from, {
+      search: this.props.history.location.state.search,
+    });
+  };
 
   render() {
-    console.log(this.props);
     return (
       <>
         <h1 className="FilmInfoTitle">Film Information</h1>
