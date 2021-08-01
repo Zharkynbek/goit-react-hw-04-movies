@@ -1,11 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 const BASE_IMG_URL = "https://image.tmdb.org/t/p/w500";
 const defaultPoster =
   "http://valmorgan.co.nz/wp-content/uploads/2016/06/default-movie-1-3.jpg";
 
-const MoviesListItem = ({ movie, history, query }) => {
+const MoviesListItem = ({ movie, query }) => {
+  const location = useLocation();
   return (
     <Link
       style={{ textDecoration: "none" }}
@@ -14,7 +15,7 @@ const MoviesListItem = ({ movie, history, query }) => {
         state: {
           id: movie.id,
           search: query !== undefined ? query : "",
-          from: history.location.pathname,
+          from: location.pathname,
         },
       }}
     >

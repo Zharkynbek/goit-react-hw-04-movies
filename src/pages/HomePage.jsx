@@ -1,26 +1,24 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import MoviesList from "../components/MoviesList/MoviesList";
 import { getTrendingFilms } from "../utils/apiService";
-// import { NavLink } from "react-router-dom";
 
-class HomePage extends Component {
-  state = {
-    movies: [],
-  };
+export default function HomePage() {
+  const [movies, setMovies] = useState([]);
 
-  componentDidMount() {
+  useEffect(() => {
+    let cleanUp = false;
     getTrendingFilms().then((resp) => {
-      this.setState({ movies: resp.data.results });
+      if (!cleanUp) {
+        setMovies(resp.data.results);
+      }
     });
-  }
-  render() {
-    return (
-      <>
-        <h1 className="HomeTitle">Tranding today</h1>
-        <MoviesList history={this.props.history} movies={this.state.movies} />
-      </>
-    );
-  }
-}
+    return () => (cleanUp = true);
+  });
 
-export default HomePage;
+  return (
+    <>
+      <h1 className="HomeTitle">Tranding today</h1>
+      <MoviesList movies={movies} />
+    </>
+  );
+}

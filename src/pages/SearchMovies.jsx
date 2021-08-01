@@ -1,63 +1,53 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router";
 import { getFilmsByQuery } from "../utils/apiService";
 import MoviesList from "../components/MoviesList/MoviesList";
 
-class SearchMovies extends Component {
-  state = {
-    query: "",
-    movies: [],
-  };
+export default function SearchMovies() {
+  const [query, setQuery] = useState("");
+  const [movies, setMovies] = useState([]);
 
-  componentDidMount = () => {
-    if (this.props.location.state !== null) {
-      this.setState({
-        query: this.props.location.state.search,
-      });
-      getFilmsByQuery(this.props.location.state.search).then((resp) => {
-        this.setState({
-          movies: resp.data.results,
-        });
+  const location = useLocation();
+
+  useEffect(() => {
+    let cleanUp = false;
+    setQuery(location.state !== null ? location.state.search : "");
+    if (location.state !== null) {
+      getFilmsByQuery(location.state.search).then((resp) => {
+        if (!cleanUp) {
+          setMovies(resp.data.results);
+        }
       });
     }
+
+    return () => (cleanUp = true);
+  }, [location.state]);
+
+  const handleChangeQuery = (e) => {
+    setQuery(e.target.value);
   };
 
-  handleChangeQuery = (e) => {
-    this.setState({
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  handleSubmitForm = (e) => {
+  const handleSubmitForm = (e) => {
     e.preventDefault();
-    getFilmsByQuery(this.state.query).then((resp) => {
-      this.setState({
-        movies: resp.data.results,
-      });
+    getFilmsByQuery(query).then((resp) => {
+      setMovies(resp.data.results);
     });
   };
 
-  render() {
-    return (
-      <>
-        <form action="" onSubmit={this.handleSubmitForm}>
-          <label htmlFor="">
-            <input
-              onInput={this.handleChangeQuery}
-              type="text"
-              placeholder="search movies"
-              name="query"
-              value={this.state.query}
-            />
-          </label>
-        </form>
-        <MoviesList
-          query={this.state.query}
-          history={this.props.history}
-          movies={this.state.movies}
-        />
-      </>
-    );
-  }
+  return (
+    <>
+      <form action="" onSubmit={handleSubmitForm}>
+        <label htmlFor="">
+          <input
+            onInput={handleChangeQuery}
+            type="text"
+            placeholder="search movies"
+            name="query"
+            value={query}
+          />
+        </label>
+      </form>
+      <MoviesList query={query} movies={movies} />
+    </>
+  );
 }
-
-export default SearchMovies;
