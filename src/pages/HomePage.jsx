@@ -14,6 +14,9 @@ export default function HomePage() {
     });
     return () => (cleanUp = true);
   });
+  useEffect(() => {
+    document.title = "Top Movies";
+  });
 
   return (
     <>
